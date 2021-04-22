@@ -141,3 +141,36 @@ export const addPartners = partners => ({
     type: ActionTypes.ADD_PARTNERS,
     payload: partners
 });
+
+export const postFavorite = campsiteId => dispatch => {
+    setTimeout(() => {
+        dispatch(addFavorite(campsiteId));
+    }, 2000);
+};
+
+export const addFavorite = campsiteId => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: campsiteId
+});
+
+export const postComment = (campsiteId, rating, author, text) => dispatch => {
+
+    const newComment = {
+        campsiteId: campsiteId,
+        rating: rating,
+        author: author,
+        text: text
+    };
+
+    newComment.date=new Date().toDateString();
+
+    setTimeout(() => {
+        dispatch(addComment(newComment));
+    }, 2000);
+}
+
+
+export const addComment = comments => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: comments
+});
